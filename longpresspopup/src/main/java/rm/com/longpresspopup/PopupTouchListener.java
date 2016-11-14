@@ -119,6 +119,7 @@ class PopupTouchListener implements View.OnTouchListener {
     }
 
     private void continuePress(MotionEvent motionEvent, int pressStatus) {
+        // TODO Check if the motionEvent has gone outside the view
         mPressPopupInterface.onPressContinue(pressStatus, motionEvent);
 
         updateLastMotionEventRunnable(motionEvent);
