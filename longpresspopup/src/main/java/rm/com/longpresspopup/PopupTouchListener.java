@@ -115,17 +115,17 @@ class PopupTouchListener implements View.OnTouchListener {
         mStartPressTimestamp = System.currentTimeMillis();
         mCurrentPressStatus = STATUS_PRESSING;
 
-        mPressPopupInterface.onPressStart(motionEvent.getX(), motionEvent.getY());
+        mPressPopupInterface.onPressStart(motionEvent);
     }
 
     private void continuePress(MotionEvent motionEvent, int pressStatus) {
-        mPressPopupInterface.onPressContinue(pressStatus, motionEvent.getX(), motionEvent.getY());
+        mPressPopupInterface.onPressContinue(pressStatus, motionEvent);
 
         updateLastMotionEventRunnable(motionEvent);
     }
 
     private void stopPress(MotionEvent motionEvent) {
-        mPressPopupInterface.onPressStop(motionEvent.getX(), motionEvent.getY());
+        mPressPopupInterface.onPressStop(motionEvent);
 
         resetPressVariables();
     }
@@ -134,16 +134,15 @@ class PopupTouchListener implements View.OnTouchListener {
     // Long press methods
     private void startLongPress(MotionEvent motionEvent) {
         mCurrentPressStatus = STATUS_LONG_PRESSING;
-        mPressPopupInterface.onLongPressStart(motionEvent.getX(), motionEvent.getY());
+        mPressPopupInterface.onLongPressStart(motionEvent);
     }
 
     private void continueLongPress(MotionEvent motionEvent, int longPressDuration) {
-        mPressPopupInterface.onLongPressContinue(longPressDuration,
-                motionEvent.getX(), motionEvent.getY());
+        mPressPopupInterface.onLongPressContinue(longPressDuration, motionEvent);
     }
 
     private void stopLongPress(MotionEvent motionEvent) {
-        mPressPopupInterface.onLongPressEnd(motionEvent.getX(), motionEvent.getY());
+        mPressPopupInterface.onLongPressEnd(motionEvent);
 
         resetPressVariables();
     }

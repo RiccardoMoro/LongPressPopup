@@ -17,11 +17,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        android:text="Premimi!"/>
+        android:text="Long press me!"/>
 
     <Button
         android:id="@+id/btn_long_clickable_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Premimi e tienimi premuto!"/>
+        android:layout_marginBottom="12dp"
+        android:text="Long press me2!"/>
+
+    <Button
+        android:id="@+id/btn_long_clickable_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Long press me3!"/>
+
+    <Button
+        android:id="@+id/btn_long_clickable_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="Long press me4!"/>
 </LinearLayout>

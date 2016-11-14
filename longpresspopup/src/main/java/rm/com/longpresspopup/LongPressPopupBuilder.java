@@ -2,6 +2,7 @@ package rm.com.longpresspopup;
 
 import android.content.Context;
 import android.support.annotation.IntRange;
+import android.support.annotation.LayoutRes;
 import android.view.View;
 
 /**
@@ -15,21 +16,33 @@ public class LongPressPopupBuilder {
     private Context mContext;
     private View mViewTarget;
     private View mViewPopup;
+    @LayoutRes
+    private int mViewPopupRes;
+    private PopupInflaterListener mInflaterListener;
     private int mLongPressDuration;
     private boolean mDismissOnLongPressStop;
     private boolean mDismissOnTouchOutside;
     private boolean mDismissOnBackPressed;
-    private PopupListener mPopupListener;
+    private boolean mDispatchTouchEventOnRelease;
+    private View.OnClickListener mLongPressReleaseClickListener;
+    private PopupOnHoverListener mOnHoverListener;
+    private PopupStateListener mPopupListener;
     private String mTag;
 
     public LongPressPopupBuilder(Context context) {
         mContext = context;
         mViewTarget = null;
         mViewPopup = null;
+        mViewPopupRes = 0;
+        mInflaterListener = null;
         mLongPressDuration = PopupTouchListener.LONG_CLICK_DURATION;
         mDismissOnLongPressStop = true;
         mDismissOnTouchOutside = true;
         mDismissOnBackPressed = true;
+        mDispatchTouchEventOnRelease = true;
+        mLongPressReleaseClickListener = null;
+        mOnHoverListener = null;
+        mPopupListener = null;
         mTag = null;
     }
 
@@ -45,6 +58,14 @@ public class LongPressPopupBuilder {
         return this;
     }
 
+    public LongPressPopupBuilder setPopupView(@LayoutRes int popupViewRes,
+                                              PopupInflaterListener inflaterListener) {
+        mViewPopupRes = popupViewRes;
+        mInflaterListener = inflaterListener;
+
+        return this;
+    }
+
     public LongPressPopupBuilder setLongPressDuration(@IntRange(from = 1) int duration) {
         if (duration > 0) {
             mLongPressDuration = duration;
@@ -55,6 +76,10 @@ public class LongPressPopupBuilder {
 
     public LongPressPopupBuilder setDismissOnLongPressStop(boolean dismissOnPressStop) {
         mDismissOnLongPressStop = dismissOnPressStop;
+
+        // Set dispatch touch on release only if the dialog is set to be dismissed after touch
+        // release
+        mDispatchTouchEventOnRelease = mDismissOnLongPressStop;
         return this;
     }
 
@@ -68,7 +93,17 @@ public class LongPressPopupBuilder {
         return this;
     }
 
-    public LongPressPopupBuilder setListener(PopupListener popupListener) {
+    public LongPressPopupBuilder setLongPressReleaseListener(View.OnClickListener listener) {
+        mLongPressReleaseClickListener = listener;
+        return this;
+    }
+
+    public LongPressPopupBuilder setOnHoverListener(PopupOnHoverListener listener) {
+        mOnHoverListener = listener;
+        return this;
+    }
+
+    public LongPressPopupBuilder setPopupListener(PopupStateListener popupListener) {
         mPopupListener = popupListener;
         return this;
     }
@@ -92,6 +127,15 @@ public class LongPressPopupBuilder {
         return mViewPopup;
     }
 
+    @LayoutRes
+    public int getPopupViewRes() {
+        return mViewPopupRes;
+    }
+
+    public PopupInflaterListener getInflaterListener() {
+        return mInflaterListener;
+    }
+
     public int getLongPressDuration() {
         return mLongPressDuration;
     }
@@ -108,7 +152,19 @@ public class LongPressPopupBuilder {
         return mDismissOnBackPressed;
     }
 
-    public PopupListener getListener() {
+    public boolean isDispatchTouchEventOnRelease() {
+        return mDispatchTouchEventOnRelease;
+    }
+
+    public View.OnClickListener getLongPressReleaseClickListener() {
+        return mLongPressReleaseClickListener;
+    }
+
+    public PopupOnHoverListener getOnHoverListener() {
+        return mOnHoverListener;
+    }
+
+    public PopupStateListener getPopupListener() {
         return mPopupListener;
     }
 
