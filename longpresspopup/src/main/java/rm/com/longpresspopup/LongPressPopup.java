@@ -13,6 +13,8 @@ import android.view.View;
 
 public class LongPressPopup implements LongPressPopupInterface, DialogInterface.OnDismissListener {
 
+    private static final String TAG = LongPressPopup.class.getSimpleName();
+
     private Context mContext;
     private View mViewTarget;
     private View mViewPopup;
@@ -68,22 +70,22 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     // LongPressPopupInterface methods
     @Override
     public void onPressStart(float x, float y) {
-        Log.e("Test", "on press started");
+        Log.e(TAG, "on press started");
     }
 
     @Override
     public void onPressContinue(int progress, float x, float y) {
-        Log.e("Test", "on press continue: " + progress);
+        Log.e(TAG, "on press continue: " + progress);
     }
 
     @Override
     public void onPressStop(float x, float y) {
-        Log.e("Test", "on press stop");
+        Log.e(TAG, "on press stop");
     }
 
     @Override
     public void onLongPressStart(float x, float y) {
-        Log.e("Test", "On long press started");
+        Log.e(TAG, "On long press started");
 
         if (mDialogPopup == null) {
             createDialog();
@@ -100,12 +102,12 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
     @Override
     public void onLongPressContinue(int longPressTime, float x, float y) {
-        Log.e("Test", "on long press continue: " + longPressTime);
+        Log.e(TAG, "on long press continue: " + longPressTime);
     }
 
     @Override
     public void onLongPressEnd(float x, float y) {
-        Log.e("Test", "on long press stop");
+        Log.e(TAG, "on long press stop");
 
         if (mDismissOnLongPressStop && mPopupListener != null) {
             mDialogPopup.dismiss();

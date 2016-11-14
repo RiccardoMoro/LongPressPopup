@@ -11,6 +11,8 @@ import android.support.v7.app.AlertDialog;
 
 public class DialogPopup extends AlertDialog {
 
+    private static final String TAG = AlertDialog.class.getSimpleName();
+
     protected DialogPopup(@NonNull Context context) {
         super(context);
     }

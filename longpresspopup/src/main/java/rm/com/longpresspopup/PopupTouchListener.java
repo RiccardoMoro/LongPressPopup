@@ -2,7 +2,6 @@ package rm.com.longpresspopup;
 
 import android.os.Handler;
 import android.support.annotation.IntDef;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,6 +13,8 @@ import java.lang.annotation.RetentionPolicy;
  */
 
 class PopupTouchListener implements View.OnTouchListener {
+
+    private static final String TAG = PopupTouchListener.class.getSimpleName();
 
     // Long click duration in milliseconds
     static final int LONG_CLICK_DURATION = 1000;
@@ -108,7 +109,6 @@ class PopupTouchListener implements View.OnTouchListener {
 
         // Add 10 milliseconds to avoid premature runnable calls
         mLongPressHandler.postDelayed(mLongPressRunnable, mLongClickDuration + 10);
-        Log.e("Test", "Start postDelayed");
 
         updateLastMotionEventRunnable(motionEvent);
 
@@ -163,7 +163,6 @@ class PopupTouchListener implements View.OnTouchListener {
 
         if (mLongPressHandler != null && mLongPressRunnable != null) {
             mLongPressHandler.removeCallbacks(mLongPressRunnable);
-            Log.e("Test", "Remove callback from handler");
         }
     }
 

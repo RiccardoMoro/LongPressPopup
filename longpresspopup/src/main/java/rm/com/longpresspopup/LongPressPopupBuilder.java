@@ -10,6 +10,8 @@ import android.view.View;
 
 public class LongPressPopupBuilder {
 
+    private static final String TAG = LongPressPopupBuilder.class.getSimpleName();
+
     private Context mContext;
     private View mViewTarget;
     private View mViewPopup;
