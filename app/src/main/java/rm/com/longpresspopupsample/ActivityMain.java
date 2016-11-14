@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import rm.com.longpresspopup.LongPressPopup;
 import rm.com.longpresspopup.LongPressPopupBuilder;
 import rm.com.longpresspopup.PopupInflaterListener;
 import rm.com.longpresspopup.PopupOnHoverListener;
@@ -43,6 +44,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                 .setPopupView(button)
                 .setLongPressDuration(200)
                 .setDismissOnLongPressStop(false)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_BOTTOM)
                 .setDismissOnTouchOutside(false)
                 .setDismissOnBackPressed(true)
                 .setPopupListener(this)
@@ -54,6 +56,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                 .setPopupView(button2)
                 .setLongPressDuration(500)
                 .setDismissOnLongPressStop(true)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_TOP)
                 .setPopupListener(this)
                 .build()
                 .register();
@@ -61,6 +64,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
         new LongPressPopupBuilder(this)
                 .setTarget(mBtn3)
                 .setPopupView(R.layout.poup_layout, this)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_RIGHT)
                 .setLongPressDuration(500)
                 .setDismissOnLongPressStop(true)
                 .build()
@@ -70,6 +74,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                 .setTarget(mBtn4)
                 .setPopupView(R.layout.poup_layout, null)
                 .setLongPressDuration(500)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_LEFT)
                 .setDismissOnLongPressStop(true)
                 .setOnHoverListener(new PopupOnHoverListener() {
 

@@ -2,6 +2,7 @@ package rm.com.longpresspopup;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -9,6 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * Created by Riccardo on 11/11/16.
@@ -35,6 +39,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     private PopupStateListener mPopupListener;
     private String mTag;
     private DialogPopup mDialogPopup;
+    @AnimationType
+    private int mAnimationType;
 
     LongPressPopup(@NonNull LongPressPopupBuilder builder) {
         if (builder != null) {
@@ -60,6 +66,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
             mTag = builder.getTag();
 
             mDialogPopup = null;
+
+            mAnimationType = builder.getAnimationType();
         } else {
             throw new IllegalArgumentException("Cannot create from null builder");
         }
@@ -262,7 +270,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     }
 
     private void createDialog() {
-        mDialogPopup = new DialogPopup(mContext) {
+        mDialogPopup = new DialogPopup(mContext, mAnimationType) {
             @Override
             public void onBackPressed() {
                 if (mDismissOnBackPressed) {
@@ -330,5 +338,30 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
     public String getTag() {
         return mTag;
+    }
+
+    public int getAnimationType() {
+        return mAnimationType;
+    }
+
+
+    // Animation type
+    public static final int ANIMATION_TYPE_NO_ANIMATION = 0;
+    public static final int ANIMATION_TYPE_FROM_LEFT = 1;
+    public static final int ANIMATION_TYPE_FROM_RIGHT = 2;
+    public static final int ANIMATION_TYPE_FROM_TOP = 3;
+    public static final int ANIMATION_TYPE_FROM_BOTTOM = 4;
+    public static final int ANIMATION_TYPE_FROM_CENTER = 5;
+    public static final int ANIMATION_TYPE_FROM_TOUCH = 6;
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({ANIMATION_TYPE_NO_ANIMATION,
+            ANIMATION_TYPE_FROM_LEFT,
+            ANIMATION_TYPE_FROM_RIGHT,
+            ANIMATION_TYPE_FROM_TOP,
+            ANIMATION_TYPE_FROM_BOTTOM,
+            ANIMATION_TYPE_FROM_CENTER,
+            ANIMATION_TYPE_FROM_TOUCH})
+    public @interface AnimationType {
     }
 }

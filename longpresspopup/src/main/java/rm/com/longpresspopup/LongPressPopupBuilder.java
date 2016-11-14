@@ -28,6 +28,7 @@ public class LongPressPopupBuilder {
     private PopupOnHoverListener mOnHoverListener;
     private PopupStateListener mPopupListener;
     private String mTag;
+    private int mAnimationType;
 
     public LongPressPopupBuilder(Context context) {
         mContext = context;
@@ -44,6 +45,7 @@ public class LongPressPopupBuilder {
         mOnHoverListener = null;
         mPopupListener = null;
         mTag = null;
+        mAnimationType = LongPressPopup.ANIMATION_TYPE_FROM_CENTER;
     }
 
 
@@ -113,6 +115,11 @@ public class LongPressPopupBuilder {
         return this;
     }
 
+    public LongPressPopupBuilder setAnimationType(@LongPressPopup.AnimationType int animationType) {
+        mAnimationType = animationType;
+        return this;
+    }
+
 
     // Getters
     public Context getContext() {
@@ -170,6 +177,11 @@ public class LongPressPopupBuilder {
 
     public String getTag() {
         return mTag;
+    }
+
+    @LongPressPopup.AnimationType
+    public int getAnimationType() {
+        return mAnimationType;
     }
 
 

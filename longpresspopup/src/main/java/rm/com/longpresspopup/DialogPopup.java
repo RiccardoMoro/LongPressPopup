@@ -13,8 +13,14 @@ public class DialogPopup extends AlertDialog {
 
     private static final String TAG = AlertDialog.class.getSimpleName();
 
-    protected DialogPopup(@NonNull Context context) {
+    @LongPressPopup.AnimationType
+    private int mAnimationType;
+
+    protected DialogPopup(@NonNull Context context,
+                          @LongPressPopup.AnimationType int animationType) {
         super(context);
+
+        mAnimationType = animationType;
     }
 
     @Override
@@ -22,7 +28,44 @@ public class DialogPopup extends AlertDialog {
         super.onCreate(savedInstanceState);
 
         try {
-            getWindow().getAttributes().windowAnimations = R.style.DialogAnimations;
+            int animations = 0;
+            switch (mAnimationType) {
+                case LongPressPopup.ANIMATION_TYPE_NO_ANIMATION:
+
+                    animations = 0;
+                    break;
+
+                case LongPressPopup.ANIMATION_TYPE_FROM_LEFT:
+
+                    animations = R.style.DialogAnimationsFromLeft;
+                    break;
+
+                case LongPressPopup.ANIMATION_TYPE_FROM_RIGHT:
+
+                    animations = R.style.DialogAnimationsFromRight;
+                    break;
+
+                case LongPressPopup.ANIMATION_TYPE_FROM_BOTTOM:
+
+                    animations = R.style.DialogAnimationsFromBottom;
+                    break;
+                case LongPressPopup.ANIMATION_TYPE_FROM_TOP:
+
+                    animations = R.style.DialogAnimationsFromTop;
+                    break;
+
+                case LongPressPopup.ANIMATION_TYPE_FROM_CENTER:
+
+                    animations = R.style.DialogAnimationsFromCenter;
+                    break;
+
+                case LongPressPopup.ANIMATION_TYPE_FROM_TOUCH:
+
+                    animations = R.style.DialogAnimationsFromTouch;
+                    break;
+            }
+
+            getWindow().setWindowAnimations(animations);
         } catch (Exception e) {
             e.printStackTrace();
         }
