@@ -2,6 +2,8 @@ package rm.com.longpresspopup;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 
@@ -14,19 +16,23 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     private Context mContext;
     private View mViewTarget;
     private View mViewPopup;
+    private int mLongPressDuration;
     private boolean mDismissOnLongPressStop;
-    private final boolean mDismissOnTouchOutside;
+    private boolean mDismissOnTouchOutside;
+    private boolean mDismissOnBackPressed;
     private PopupListener mPopupListener;
     private String mTag;
     private DialogPopup mDialogPopup;
 
-    LongPressPopup(LongPressPopupBuilder builder) {
+    LongPressPopup(@NonNull LongPressPopupBuilder builder) {
         if (builder != null) {
             mContext = builder.getContext();
             mViewTarget = builder.getViewTarget();
             mViewPopup = builder.getPopupView();
+            mLongPressDuration = builder.getLongPressDuration();
             mDismissOnLongPressStop = builder.isDismissOnLongPressStop();
             mDismissOnTouchOutside = builder.isDismissOnTouchOutside();
+            mDismissOnBackPressed = builder.isDismissOnBackPressed();
             mPopupListener = builder.getListener();
             mTag = builder.getTag();
 
@@ -39,7 +45,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     public void register() {
         checkFieldsAndThrow();
 
-        mViewTarget.setOnTouchListener(new PopupTouchListener(this));
+        mViewTarget.setOnTouchListener(new PopupTouchListener(this, mLongPressDuration));
     }
 
     private void checkFieldsAndThrow() {
@@ -80,9 +86,9 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
         Log.e("Test", "On long press started");
 
         if (mDialogPopup == null) {
-            mDialogPopup = new DialogPopup(mContext);
+            createDialog();
         }
-        mDialogPopup.setCancelable(!mDismissOnTouchOutside);
+        mDialogPopup.setCancelable(mDismissOnTouchOutside);
         mDialogPopup.setView(mViewPopup);
         mDialogPopup.setOnDismissListener(this);
         mDialogPopup.show();
@@ -112,5 +118,25 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
         if (mPopupListener != null) {
             mPopupListener.onDismiss(mTag);
         }
+    }
+
+    private void createDialog() {
+        mDialogPopup = new DialogPopup(mContext) {
+            @Override
+            public void onBackPressed() {
+                if (mDismissOnBackPressed) {
+                    super.onBackPressed();
+                    mDialogPopup.dismiss();
+                }
+            }
+        };
+    }
+
+
+    // Static utility methods
+    @Nullable
+    public static LongPressPopup findPopupByTag(String tag) {
+        // TODO Create a manager that has all the current instances
+        return null;
     }
 }
