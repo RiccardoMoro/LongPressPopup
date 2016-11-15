@@ -17,7 +17,7 @@ class PopupTouchListener implements View.OnTouchListener {
     private static final String TAG = PopupTouchListener.class.getSimpleName();
 
     // Long click duration in milliseconds
-    static final int LONG_CLICK_DURATION = 1000;
+    static final int LONG_CLICK_DURATION = 500;
 
     private LongPressPopupInterface mPressPopupInterface;
 

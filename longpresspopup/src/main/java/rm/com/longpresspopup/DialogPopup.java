@@ -58,11 +58,6 @@ public class DialogPopup extends AlertDialog {
 
                     animations = R.style.DialogAnimationsFromCenter;
                     break;
-
-                case LongPressPopup.ANIMATION_TYPE_FROM_TOUCH:
-
-                    animations = R.style.DialogAnimationsFromTouch;
-                    break;
             }
 
             getWindow().setWindowAnimations(animations);

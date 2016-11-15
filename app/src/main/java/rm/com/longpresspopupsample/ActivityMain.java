@@ -22,6 +22,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
     private Button mBtn2;
     private Button mBtn3;
     private Button mBtn4;
+    private Button mBtn5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
         mBtn2 = (Button) findViewById(R.id.btn_long_clickable_2);
         mBtn3 = (Button) findViewById(R.id.btn_long_clickable_3);
         mBtn4 = (Button) findViewById(R.id.btn_long_clickable_4);
+        mBtn5 = (Button) findViewById(R.id.btn_long_clickable_5);
 
         Button button = new Button(this);
         button.setText("Hello, World!");
@@ -63,7 +65,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
 
         new LongPressPopupBuilder(this)
                 .setTarget(mBtn3)
-                .setPopupView(R.layout.poup_layout, this)
+                .setPopupView(R.layout.popup_layout, this)
                 .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_RIGHT)
                 .setLongPressDuration(500)
                 .setDismissOnLongPressStop(true)
@@ -72,7 +74,7 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
 
         new LongPressPopupBuilder(this)
                 .setTarget(mBtn4)
-                .setPopupView(R.layout.poup_layout, null)
+                .setPopupView(R.layout.popup_layout, null)
                 .setLongPressDuration(500)
                 .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_LEFT)
                 .setDismissOnLongPressStop(true)
@@ -95,6 +97,12 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                                 view.getClass().getSimpleName());
                     }
                 })
+                .build()
+                .register();
+
+        new LongPressPopupBuilder(this)
+                .setTarget(mBtn5)
+                .setPopupView(R.layout.popup_layout, null)
                 .build()
                 .register();
     }

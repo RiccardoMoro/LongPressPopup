@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_margin="12dp"
         android:gravity="center_horizontal"
         android:text="This is a popup"/>
 
@@ -16,10 +16,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hello, World!"/>
-
-    <CheckBox
-        android:id="@+id/checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Check me!"/>
 </LinearLayout>

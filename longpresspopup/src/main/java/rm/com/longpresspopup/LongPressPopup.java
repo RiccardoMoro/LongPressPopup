@@ -60,7 +60,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
             mDispatchTouchEventOnRelease = builder.isDispatchTouchEventOnRelease();
             mLongPressReleaseClickListener = builder.getLongPressReleaseClickListener();
 
-            // Hover only on ice cream sandwitch or later
+            // Hover only on ice cream sandwich or later
             mOnHoverListener = builder.getOnHoverListener();
             mPopupListener = builder.getPopupListener();
             mTag = builder.getTag();
@@ -352,7 +352,6 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     public static final int ANIMATION_TYPE_FROM_TOP = 3;
     public static final int ANIMATION_TYPE_FROM_BOTTOM = 4;
     public static final int ANIMATION_TYPE_FROM_CENTER = 5;
-    public static final int ANIMATION_TYPE_FROM_TOUCH = 6;
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({ANIMATION_TYPE_NO_ANIMATION,
@@ -360,8 +359,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
             ANIMATION_TYPE_FROM_RIGHT,
             ANIMATION_TYPE_FROM_TOP,
             ANIMATION_TYPE_FROM_BOTTOM,
-            ANIMATION_TYPE_FROM_CENTER,
-            ANIMATION_TYPE_FROM_TOUCH})
+            ANIMATION_TYPE_FROM_CENTER})
     public @interface AnimationType {
     }
 }
