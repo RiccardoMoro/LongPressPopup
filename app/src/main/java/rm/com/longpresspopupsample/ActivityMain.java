@@ -2,7 +2,6 @@ package rm.com.longpresspopupsample;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -57,7 +56,8 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
         new LongPressPopupBuilder(this)
                 .setTarget(mBtn2)
                 .setPopupView(button2)
-                .setLongPressDuration(500)
+                .setLongPressDuration(1500)
+                .setCancelTouchOnDragOutsideView(false)
                 .setDismissOnLongPressStop(true)
                 .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_TOP)
                 .setPopupListener(this)
@@ -68,7 +68,6 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                 .setTarget(mBtn3)
                 .setPopupView(R.layout.popup_layout, this)
                 .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_RIGHT)
-                .setLongPressDuration(500)
                 .setDismissOnLongPressStop(true)
                 .build()
                 .register();
@@ -76,7 +75,6 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
         new LongPressPopupBuilder(this)
                 .setTarget(mBtn4)
                 .setPopupView(R.layout.popup_layout, null)
-                .setLongPressDuration(500)
                 .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_LEFT)
                 .setDismissOnLongPressStop(true)
                 .setOnHoverListener(new PopupOnHoverListener() {
@@ -101,18 +99,11 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                 .build()
                 .register();
 
-        final LongPressPopup popup5 = new LongPressPopupBuilder(this)
+        new LongPressPopupBuilder(this)
                 .setTarget(mBtn5)
                 .setPopupView(R.layout.popup_layout, null)
-                .build();
-        //popup5.register();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                popup5.showNow();
-            }
-        }, 3000);
+                .build()
+                .register();
     }
 
     @Override

@@ -1,6 +1,7 @@
 package rm.com.longpresspopup;
 
 import android.view.MotionEvent;
+import android.view.View;
 
 /**
  * Created by Riccardo on 11/11/16.
@@ -11,7 +12,7 @@ public interface LongPressPopupInterface {
     /**
      * Called when normal press register, still NOT long press
      */
-    void onPressStart(MotionEvent motionEvent);
+    void onPressStart(View pressedView, MotionEvent motionEvent);
 
     /**
      * Called while continue to press, but still not for long enough

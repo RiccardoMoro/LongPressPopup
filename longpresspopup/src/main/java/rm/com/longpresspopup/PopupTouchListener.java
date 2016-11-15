@@ -56,7 +56,7 @@ class PopupTouchListener implements View.OnTouchListener {
                 case STATUS_NOT_PRESSED:
 
                     // If register press and currently not pressed, register pressing
-                    startPress(motionEvent);
+                    startPress(view, motionEvent);
                     break;
                 case STATUS_PRESSING:
 
@@ -105,7 +105,7 @@ class PopupTouchListener implements View.OnTouchListener {
 
 
     // Standard press methods
-    private void startPress(MotionEvent motionEvent) {
+    private void startPress(View touchedView, MotionEvent motionEvent) {
 
         // Add 10 milliseconds to avoid premature runnable calls
         mLongPressHandler.postDelayed(mLongPressRunnable, mLongClickDuration + 10);
@@ -115,17 +115,16 @@ class PopupTouchListener implements View.OnTouchListener {
         mStartPressTimestamp = System.currentTimeMillis();
         mCurrentPressStatus = STATUS_PRESSING;
 
-        mPressPopupInterface.onPressStart(motionEvent);
+        mPressPopupInterface.onPressStart(touchedView, motionEvent);
     }
 
     private void continuePress(MotionEvent motionEvent, int pressStatus) {
-        // TODO Check if the motionEvent has gone outside the view
         mPressPopupInterface.onPressContinue(pressStatus, motionEvent);
 
         updateLastMotionEventRunnable(motionEvent);
     }
 
-    private void stopPress(MotionEvent motionEvent) {
+    void stopPress(MotionEvent motionEvent) {
         mPressPopupInterface.onPressStop(motionEvent);
 
         resetPressVariables();

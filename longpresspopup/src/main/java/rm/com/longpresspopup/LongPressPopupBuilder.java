@@ -24,6 +24,7 @@ public class LongPressPopupBuilder {
     private boolean mDismissOnTouchOutside;
     private boolean mDismissOnBackPressed;
     private boolean mDispatchTouchEventOnRelease;
+    private boolean mCancelTouchOnDragOutsideView;
     private View.OnClickListener mLongPressReleaseClickListener;
     private PopupOnHoverListener mOnHoverListener;
     private PopupStateListener mPopupListener;
@@ -41,6 +42,7 @@ public class LongPressPopupBuilder {
         mDismissOnTouchOutside = true;
         mDismissOnBackPressed = true;
         mDispatchTouchEventOnRelease = true;
+        mCancelTouchOnDragOutsideView = true;
         mLongPressReleaseClickListener = null;
         mOnHoverListener = null;
         mPopupListener = null;
@@ -92,6 +94,11 @@ public class LongPressPopupBuilder {
 
     public LongPressPopupBuilder setDismissOnBackPressed(boolean dismissOnBackPressed) {
         mDismissOnBackPressed = dismissOnBackPressed;
+        return this;
+    }
+
+    public LongPressPopupBuilder setCancelTouchOnDragOutsideView(boolean cancelOnDragOutside) {
+        mCancelTouchOnDragOutsideView = cancelOnDragOutside;
         return this;
     }
 
@@ -161,6 +168,10 @@ public class LongPressPopupBuilder {
 
     public boolean isDispatchTouchEventOnRelease() {
         return mDispatchTouchEventOnRelease;
+    }
+
+    public boolean isCancelOnDragOutsideView() {
+        return mCancelTouchOnDragOutsideView;
     }
 
     public View.OnClickListener getLongPressReleaseClickListener() {

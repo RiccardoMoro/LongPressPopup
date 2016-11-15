@@ -1,5 +1,6 @@
 package rm.com.longpresspopup;
 
+import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -9,7 +10,7 @@ import android.view.View;
 
 public class LongPressPopupUtils {
 
-    public static boolean isTouchInsideView(View view, MotionEvent motionEvent) {
+    public static boolean isTouchInsideView(@NonNull View view, MotionEvent motionEvent) {
         int motionEventX = (int) motionEvent.getRawX();
         int motionEventY = (int) motionEvent.getRawY();
 

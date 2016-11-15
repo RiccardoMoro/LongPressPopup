@@ -34,6 +34,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     private boolean mDismissOnTouchOutside;
     private boolean mDismissOnBackPressed;
     private boolean mDispatchTouchEventOnRelease;
+    private boolean mCancelTouchOnDragOutsideView;
+    private View mInitialPressedView;
     private View.OnClickListener mLongPressReleaseClickListener;
     private PopupOnHoverListener mOnHoverListener;
     private PopupStateListener mPopupListener;
@@ -42,6 +44,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     @AnimationType
     private int mAnimationType;
 
+    private PopupTouchListener mPopupTouchListener;
     private boolean mRegistered;
 
     LongPressPopup(@NonNull LongPressPopupBuilder builder) {
@@ -60,6 +63,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
             mDismissOnTouchOutside = builder.isDismissOnTouchOutside();
             mDismissOnBackPressed = builder.isDismissOnBackPressed();
             mDispatchTouchEventOnRelease = builder.isDispatchTouchEventOnRelease();
+            mCancelTouchOnDragOutsideView = builder.isCancelOnDragOutsideView();
             mLongPressReleaseClickListener = builder.getLongPressReleaseClickListener();
 
             // Hover only on ice cream sandwich or later
@@ -80,7 +84,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     public void register() {
         checkFieldsAndThrow();
 
-        mViewTarget.setOnTouchListener(new PopupTouchListener(this, mLongPressDuration));
+        mPopupTouchListener = new PopupTouchListener(this, mLongPressDuration);
+        mViewTarget.setOnTouchListener(mPopupTouchListener);
         mRegistered = true;
     }
 
@@ -160,15 +165,23 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
     // LongPressPopupInterface methods
     @Override
-    public void onPressStart(MotionEvent motionEvent) {
+    public void onPressStart(View pressedView, MotionEvent motionEvent) {
+        mInitialPressedView = pressedView;
     }
 
     @Override
     public void onPressContinue(int progress, MotionEvent motionEvent) {
+
+        if (mCancelTouchOnDragOutsideView && mInitialPressedView != null &&
+                !LongPressPopupUtils.isTouchInsideView(mInitialPressedView, motionEvent)) {
+
+            mPopupTouchListener.stopPress(motionEvent);
+        }
     }
 
     @Override
     public void onPressStop(MotionEvent motionEvent) {
+        mInitialPressedView = null;
     }
 
     @Override
@@ -201,6 +214,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
             dismissPopupDialog();
         }
+
+        mInitialPressedView = null;
     }
 
     private void dispatchClickToLeafsOnly(ViewGroup view, MotionEvent motionEvent) {
@@ -354,6 +369,10 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
     public boolean isDispatchTouchEventOnRelease() {
         return mDispatchTouchEventOnRelease;
+    }
+
+    public boolean isCancelOnDragOutsideView() {
+        return mCancelTouchOnDragOutsideView;
     }
 
     public View.OnClickListener getLongPressReleaseClickListener() {
