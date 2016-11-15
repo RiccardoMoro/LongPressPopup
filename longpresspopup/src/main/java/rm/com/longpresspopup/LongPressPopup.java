@@ -138,11 +138,12 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     }
 
     private void dismissPopupDialog() {
-        if (mDialogPopup != null && mDialogPopup.isShowing())
+        if (mDialogPopup != null && mDialogPopup.isShowing()) {
             mDialogPopup.dismiss();
 
-        if (mPopupListener != null) {
-            mPopupListener.onDismiss(mTag);
+            if (mPopupListener != null) {
+                mPopupListener.onDismiss(mTag);
+            }
         }
     }
 
