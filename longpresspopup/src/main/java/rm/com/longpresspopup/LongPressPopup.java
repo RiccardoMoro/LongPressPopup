@@ -42,6 +42,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     @AnimationType
     private int mAnimationType;
 
+    private boolean mRegistered;
+
     LongPressPopup(@NonNull LongPressPopupBuilder builder) {
         if (builder != null) {
             mContext = builder.getContext();
@@ -68,6 +70,8 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
             mDialogPopup = null;
 
             mAnimationType = builder.getAnimationType();
+
+            mRegistered = false;
         } else {
             throw new IllegalArgumentException("Cannot create from null builder");
         }
@@ -77,6 +81,64 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
         checkFieldsAndThrow();
 
         mViewTarget.setOnTouchListener(new PopupTouchListener(this, mLongPressDuration));
+        mRegistered = true;
+    }
+
+    public void showNow() {
+        if (!mRegistered) {
+            register();
+        }
+
+        showPopupDialog();
+    }
+
+    public void dismissNow() {
+        if (!mRegistered) {
+            register();
+        }
+
+        dismissPopupDialog();
+    }
+
+    private void showPopupDialog() {
+        if (mDialogPopup == null) {
+            createDialog();
+        } else if (mDialogPopup.isShowing()) {
+            mDialogPopup.dismiss();
+        }
+        mViewRootPopup.removeAllViews();// Clear previous views
+
+        mDialogPopup.setCancelable(mDismissOnTouchOutside);
+
+        // Create the root view if only given the layout resource
+        if (mViewPopup == null && mViewPopupRes != 0) {
+
+            // Inflate manually from xml
+            mViewPopup = LayoutInflater.from(mContext)
+                    .inflate(mViewPopupRes, mViewRootPopup, false);
+        }
+        mViewRootPopup.addView(mViewPopup);// Add the popupView to the rootView
+        mDialogPopup.setView(mViewRootPopup);// Set the root view as the popup view
+
+        if (mInflaterListener != null) {
+            mInflaterListener.onViewInflated(mViewRootPopup);
+        }
+
+        mDialogPopup.setOnDismissListener(this);
+        mDialogPopup.show();
+
+        if (mPopupListener != null) {
+            mPopupListener.onShow(mTag);
+        }
+    }
+
+    private void dismissPopupDialog() {
+        if (mDialogPopup != null && mDialogPopup.isShowing())
+            mDialogPopup.dismiss();
+
+        if (mPopupListener != null) {
+            mPopupListener.onDismiss(mTag);
+        }
     }
 
     private void checkFieldsAndThrow() {
@@ -112,33 +174,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     @Override
     public void onLongPressStart(MotionEvent motionEvent) {
 
-        if (mDialogPopup == null) {
-            createDialog();
-        }
-        mViewRootPopup.removeAllViews();// Clear previous views
-
-        mDialogPopup.setCancelable(mDismissOnTouchOutside);
-
-        // Create the root view if only given the layout resource
-        if (mViewPopup == null && mViewPopupRes != 0) {
-
-            // Inflate manually from xml
-            mViewPopup = LayoutInflater.from(mContext)
-                    .inflate(mViewPopupRes, mViewRootPopup, false);
-        }
-        mViewRootPopup.addView(mViewPopup);// Add the popupView to the rootView
-        mDialogPopup.setView(mViewRootPopup);// Set the root view as the popup view
-
-        if (mInflaterListener != null) {
-            mInflaterListener.onViewInflated(mViewRootPopup);
-        }
-
-        mDialogPopup.setOnDismissListener(this);
-        mDialogPopup.show();
-
-        if (mPopupListener != null) {
-            mPopupListener.onShow(mTag);
-        }
+        showPopupDialog();
     }
 
     @Override
@@ -163,11 +199,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
         if (mDismissOnLongPressStop) {
 
-            mDialogPopup.dismiss();
-
-            if (mPopupListener != null) {
-                mPopupListener.onDismiss(mTag);
-            }
+            dismissPopupDialog();
         }
     }
 
@@ -342,6 +374,10 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
 
     public int getAnimationType() {
         return mAnimationType;
+    }
+
+    public boolean isRegistered() {
+        return mRegistered;
     }
 
 

@@ -2,6 +2,7 @@ package rm.com.longpresspopupsample;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -100,11 +101,18 @@ public class ActivityMain extends AppCompatActivity implements PopupStateListene
                 .build()
                 .register();
 
-        new LongPressPopupBuilder(this)
+        final LongPressPopup popup5 = new LongPressPopupBuilder(this)
                 .setTarget(mBtn5)
                 .setPopupView(R.layout.popup_layout, null)
-                .build()
-                .register();
+                .build();
+        //popup5.register();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                popup5.showNow();
+            }
+        }, 3000);
     }
 
     @Override
