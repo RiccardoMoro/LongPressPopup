@@ -1,3 +1,180 @@
 <resources>
     <string name="app_name">LongPressPopupSample</string>
+    <string name="cupcacke">Cupcake</string>
+    <string name="donut">Donut</string>
+    <string name="eclair">Eclair</string>
+    <string name="froyo">Froyo</string>
+    <string name="ice_cream_sandwich">Ice Cream Sandwich</string>
+    <string name="gingerbread">Gingerbread</string>
+    <string name="honeycomb">Honeycomb</string>
+    <string name="jelly_bean">Jelly Bean</string>
+    <string name="kit_kat">KitKat</string>
+    <string name="lollipop">Lollipop</string>
+    <string name="marshmellow">Marshmellow</string>
+    <string name="nougat">Noutgat</string>
+    <string name="cupcacke_desc">Android 1.5 \'Cupcake\' was the second Android version developed by
+        Google, a major platform release deployable to Android-powered handsets starting
+        in May 2009. The release includes new features for users and developers, as well as
+        changes in the Android framework API. For developers, the Android 1.5 platform is
+        available as a downloadable component for the Android SDK.
+
+        Android 1.5 included new features such as an on-screen keyboard and Bluetooth support as
+        well as improvements to existing features such as UI changes for application management and
+        several Google apps.</string>
+    <string name="donut_desc">Android 1.6 \'Donut\' is a discontinued version and the dessert-themed
+        Android code name for the version 1.6 update of the open source Android mobile operating
+        system. Developed by Google, Donut made its debut in fall 2009 for a variety of smartphones,
+        adding new features like support for CDMA smartphones, support for additional screen sizes,
+        a battery usage indicator, and a text-to-speech engine.</string>
+    <string name="eclair_desc">Android 2.0–2.1 \'Eclair\' is a discontinued version of the Android
+        mobile operating system developed by Google. Unveiled on October 26, 2009,
+        Android 2.1 builds upon the significant changes made in Android 1.6 \'Donut\'.\n
+        User experience:
+        The default home screen of Eclair displays a persistent Google Search bar across the top
+        of the screen. The camera app was also redesigned with numerous new camera features,
+        including flash support, digital zoom, scene mode, white balance,
+        color effect and macro focus. The photo gallery app also contains basic photo editing tools.
+        Addition of live wallpapers, allowing the animation of home-screen background images
+        to show movement. Speech-to-text was first introduced, replacing the comma key.
+
+        Platform
+        Android Eclair inherits platform additions from the Donut release, and also adds support
+        for near-field communication (NFC), ability to search all saved SMS and MMS messages,
+        improved Google Maps 3.1.2, and Exchange support for the Email app.
+        The operating system also provides improved typing speed on virtual keyboard,
+        along with new accessibility, calendar, and virtual private network APIs.
+        For internet browsing, Android Eclair also adds support for HTML5, refreshed
+        browser UI with bookmark thumbnails and double-tap zoom.</string>
+    <string name="froyo_desc">Android 2.2–2.2.3 \'Froyo\' is a discontinued version of the
+        Android mobile operating system developed by Google, spanning versions
+        between 2.2 and 2.2.3. It was unveiled on May 20, 2010,
+        during the Google I/O 2010 conference.
+
+        One of the most prominent changes in the Froyo release was USB tethering and Wi-Fi hotspot
+        functionality. Other changes include support for the
+        Android Cloud to Device Messaging (C2DM) service, enabling push notifications,
+        Additional application speed improvements, implemented through JIT compilation and
+        displayed within applications as top-of-the-screen banners.
+
+        As of August 13, 2016, statistics issued by Google indicate that 0.1% of all
+        Android devices accessing Google Play run Froyo.</string>
+    <string name="gingerbread_desc">Android 2.3–2.3.7 \'Gingerbread\' is a discontinued version of
+        the Android mobile operating system developed by Google and released in December 2010.
+        The Gingerbread release introduced support for near field communication (NFC)—used in
+        mobile payment solutions—and Session Initiation Protocol (SIP)—used
+        in VoIP internet telephony.
+
+        Gingerbread\'s user interface was refined in many ways, making it easier to master,
+        faster to use, and more power-efficient. A simplified color scheme with a black
+        background gave vividness and contrast to the notification bar, menus, and other user
+        interface components. Improvements in menus and settings resulted in easier navigation
+        and system control.
+
+        The Nexus S smartphone, released in 2010, was the first phone from the Google Nexus line
+        that ran Gingerbread, and also the first one from the line with built-in NFC functionality.
+
+        Gingerbread uses version 2.6.35 of the Linux kernel.
+
+        As of September 5, 2016, statistics issued by Google indicate that 1.5% of all
+        Android devices accessing Google Play run Gingerbread.</string>
+    <string name="honeycomb_desc">Android 3.0–3.2.6 \'Honeycomb\' is a discontinued version of the
+        Android platform that was designed for devices with larger screen sizes, particularly
+        tablets. Honeycomb debuted with the Motorola Xoom in February 2011. Besides the addition
+        of new features, Honeycomb introduced a new so-called \'holographic\' user interface theme
+        and an interaction model that built on the main features of Android, such as multitasking,
+        notifications and widgets.</string>
+    <string name="ice_cream_sandwich_desc"><!--Android 4.0–4.0.4 Ice Cream Sandwich is a
+        discontinued version of the Android mobile operating system developed by Google.
+        Unveiled on October 19, 2011, Android 4.0 builds upon the significant changes made by the
+        tablet-only release Android Honeycomb, in an effort to create a unified platform for both
+        smartphones and tablets, whilst simplifying and modernizing the overall Android experience
+        around a new set of human interface guidelines. As part of these efforts, Android 4.0
+        introduced a new visual appearance codenamed \'Holo\', which is built around a cleaner,
+        minimalist design, and a new default typeface named Roboto.
+
+        The Ice Cream Sandwich release also introduced a number of other new features,
+        including a refreshed home screen, near-field communication (NFC) support and the
+        ability to \'beam\' content to another user using the technology, an updated web browser,
+        a new contacts manager with social network integration, the ability to access the camera
+        and control music playback from the lock screen, visual voicemail support, face recognition
+        for device unlocking (\'Face Unlock\'), the ability to monitor and limit mobile data usage,
+        and other internal improvements.
+
+        Android 4.0 received positive reviews by critics, who praised the cleaner,
+        revamped appearance of the operating system in comparison to previous versions,
+        along with its improved performance and functionality. However, critics still felt
+        that some of Android 4.0\'s stock apps were still lacking in quality and functionality in
+        comparison to third-party equivalents, and regarded some of the operating system's new
+        features, particularly the \'face unlock\' feature, as being gimmicks.--></string>
+    <string name="jelly_bean_desc">Android 4.1–4.3.1 \'Jelly Bean\' is the name given to three major
+        point releases of the Android mobile operating system developed by Google, spanning
+        versions between 4.1 and 4.3.1.
+
+        The first of these three, 4.1, was unveiled at Google\'s I/O developer conference in
+        June 2012, focusing on performance improvements designed to give the operating
+        system a smoother and more responsive feel, improvements to the notification system
+        allowing for \"expandable\" notifications with action buttons, and other internal changes.
+        Two more releases were made under the Jelly Bean name in October 2012 and July 2013
+        respectively, including 4.2—which included further optimizations, multi-user support for
+        tablets, lock screen widgets, quick settings, and screen savers, and 4.3—contained
+        further improvements and updates to the underlying Android platform.</string>
+    <string name="kit_kat_desc">Android 4.4–4.4.4 \'KitKat\' is a version of the Android mobile
+        operating system developed by Google, spanning versions between 4.4 and 4.4.4.
+        Unveiled on September 3, 2013, KitKat focused primarily on optimizing the operating system
+        for improved performance on entry-level devices with limited resources.</string>
+    <string name="lollipop_desc">Android 5.0–5.1.1 \'Lollipop\' is a version of the Android mobile
+        operating system developed by Google, spanning versions between 5.0 and 5.1.1.
+        Unveiled on June 25, 2014 at the Google I/O 2014 conference, it became available through
+        official over-the-air (OTA) updates on November 12, 2014, for select devices that run
+        distributions of Android serviced by Google (such as Nexus and Google Play edition devices).
+        Its source code was made available on November 3, 2014.
+
+        One of the most prominent changes in the Lollipop release is a redesigned user interface
+        built around a design language known as Material Design, which was made to retain a
+        paper-like feel to the interface. Other changes include improvements to the notifications,
+        which can be accessed from the lockscreen and displayed within applications as
+        top-of-the-screen banners. Google also made internal changes to the platform, with the
+        Android Runtime (ART) officially replacing Dalvik for improved application performance,
+        and with changes intended to improve and optimize battery usage.
+
+        As of November 2016, statistics issued by Google indicate that 34% of all Android devices
+        accessing Google Play run Lollipop.</string>
+    <string name="marshmellow_desc">Android 6.0–6.0.1 \'Marshmallow\'
+        (codenamed M during development)is the 6th major version of the Android operating system.
+        First unveiled in May 2015 at Google I/O, it was officially released in October 2015.
+
+        Marshmallow primarily focuses on improving the overall user experience of Lollipop,
+        introducing a new permissions architecture, new APIs for contextual assistants
+        (a feature notably leveraged by \'Now On Tap\'—a new capability of the Google searching
+        by contextualizing an app into a simpler interface by Google Now), a new power management
+        system that reduces background activity when a device is not being physically handled,
+        native support for fingerprint recognition and USB Type-C connectors, the ability to
+        migrate data and applications to a microSD card and use it as primary storage,
+        and other internal changes.
+
+        As of September 2016, 18.7% of devices accessing Google Play run Android 6.0</string>
+    <string name="nougat_desc">Android 7.0-7.1 \'Nougat\' (codenamed Android N during development)
+        is the seventh major version of the Android operating system.
+        First released as a beta build on March 9, 2016, it was officially released on August 22,
+        2016, with Nexus devices being the first to receive the update.
+
+        Nougat introduces notable changes to the operating system and its development platform,
+        including the ability to display multiple apps on-screen at once in a split-screen view,
+        support for inline replies to notifications, as well as an OpenJDK-based Java environment
+        and support for the Vulkan graphics rendering API, and \'seamless\' system updates on
+        supported devices.</string>
+    <string name="cupcacke_numbers">1.5</string>
+    <string name="donut_numbers">1.6</string>
+    <string name="eclair_numbers">2.0 – 2.1</string>
+    <string name="froyo_numbers">2.2 – 2.2.3</string>
+    <string name="gingerbread_numbers">2.3 – 2.3.7</string>
+    <string name="honeycomb_numbers">3.0 – 3.2.6</string>
+    <string name="ice_cream_sandwich_numbers">4.0 – 4.0.3</string>
+    <string name="jelly_bean_numbers">4.1 – 4.3.1</string>
+    <string name="kit_kat_numbers">4.4 – 4.4.4</string>
+    <string name="lollipop_numbers">5.0 – 5.1.1</string>
+    <string name="marshmellow_numbers">6.0 – 6.0.1</string>
+    <string name="nougat_numbers">7.0 – 7.1</string>
+    <string name="my_github">My GitHub</string>
+    <string name="my_github_url">https://github.com/RiccardoMoro</string>
 </resources>

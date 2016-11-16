@@ -80,7 +80,8 @@ class PopupTouchListener implements View.OnTouchListener {
                                     mLongClickDuration));
                     break;
             }
-        } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {// Press finished
+        } else if (motionEvent.getAction() == MotionEvent.ACTION_UP ||
+                motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {// Press finished
 
             switch (mCurrentPressStatus) {
                 case STATUS_NOT_PRESSED:
@@ -98,9 +99,16 @@ class PopupTouchListener implements View.OnTouchListener {
                     stopLongPress(motionEvent);
                     break;
             }
+
+            view.getParent().requestDisallowInterceptTouchEvent(false);
         }
 
-        return mCurrentPressStatus == STATUS_LONG_PRESSING;
+        if (mCurrentPressStatus == STATUS_LONG_PRESSING) {
+            view.getParent().requestDisallowInterceptTouchEvent(true);
+        }
+
+        return mCurrentPressStatus == STATUS_PRESSING ||
+                mCurrentPressStatus == STATUS_LONG_PRESSING;
     }
 
 

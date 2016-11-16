@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="320dp"
+                android:background="?android:attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/popup_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/popup_title"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/popup_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:gravity="center_horizontal"
+        android:paddingBottom="24dp"
+        android:paddingTop="24dp"
+        android:textSize="24sp"/>
+</RelativeLayout>

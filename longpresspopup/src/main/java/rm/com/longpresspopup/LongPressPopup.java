@@ -89,6 +89,18 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
         mRegistered = true;
     }
 
+    public void unregister() {
+        mInflaterListener = null;
+        mLongPressReleaseClickListener = null;
+        mOnHoverListener = null;
+        mPopupListener = null;
+        mPopupTouchListener.stopPress(null);
+        mPopupTouchListener = null;
+        dismissNow();
+        dismissPopupDialog();
+        mRegistered = false;
+    }
+
     public void showNow() {
         if (!mRegistered) {
             register();
@@ -133,7 +145,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
         mDialogPopup.show();
 
         if (mPopupListener != null) {
-            mPopupListener.onShow(mTag);
+            mPopupListener.onPopupShow(mTag);
         }
     }
 
@@ -142,7 +154,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
             mDialogPopup.dismiss();
 
             if (mPopupListener != null) {
-                mPopupListener.onDismiss(mTag);
+                mPopupListener.onPopupDismiss(mTag);
             }
         }
     }
@@ -313,7 +325,7 @@ public class LongPressPopup implements LongPressPopupInterface, DialogInterface.
     @Override
     public void onDismiss(DialogInterface dialogInterface) {
         if (mPopupListener != null) {
-            mPopupListener.onDismiss(mTag);
+            mPopupListener.onPopupDismiss(mTag);
         }
     }
 

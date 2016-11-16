@@ -11,7 +11,7 @@ import android.support.v7.app.AlertDialog;
 
 public class DialogPopup extends AlertDialog {
 
-    private static final String TAG = AlertDialog.class.getSimpleName();
+    private static final String TAG = DialogPopup.class.getSimpleName();
 
     @LongPressPopup.AnimationType
     private int mAnimationType;

@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
  */
 
 public interface PopupStateListener {
-    void onShow(@Nullable String popupTag);
+    void onPopupShow(@Nullable String popupTag);
 
-    void onDismiss(@Nullable String popupTag);
+    void onPopupDismiss(@Nullable String popupTag);
 }
