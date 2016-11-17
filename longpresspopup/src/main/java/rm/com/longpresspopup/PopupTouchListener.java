@@ -2,6 +2,7 @@ package rm.com.longpresspopup;
 
 import android.os.Handler;
 import android.support.annotation.IntDef;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -48,6 +49,12 @@ class PopupTouchListener implements View.OnTouchListener {
             return false;
         }
 
+        Log.e(TAG, "Touch event: " + (motionEvent.getAction() == MotionEvent.ACTION_DOWN ? "Down" :
+                motionEvent.getAction() == MotionEvent.ACTION_UP ? "Up" :
+                        motionEvent.getAction() == MotionEvent.ACTION_CANCEL ? "Cancel" :
+                                motionEvent.getAction() == MotionEvent.ACTION_MOVE ? "Move" :
+                                        "Other action"));
+
         // Press register
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() ==
                 MotionEvent.ACTION_MOVE) {
@@ -63,7 +70,7 @@ class PopupTouchListener implements View.OnTouchListener {
                     if (System.currentTimeMillis() - mStartPressTimestamp > mLongClickDuration) {
 
                         // Pressed enough, set as long pressing
-                        startLongPress(motionEvent);
+                        startLongPress(view, motionEvent);
                     } else {
 
                         // Still not long enough, but press continue, send the current progress
@@ -100,13 +107,11 @@ class PopupTouchListener implements View.OnTouchListener {
                     break;
             }
 
-            view.getParent().requestDisallowInterceptTouchEvent(false);
+            //view.getParent().requestDisallowInterceptTouchEvent(false);
         }
 
         if (mCurrentPressStatus == STATUS_LONG_PRESSING) {
             view.getParent().requestDisallowInterceptTouchEvent(true);
-        } else {
-            view.getParent().requestDisallowInterceptTouchEvent(false);
         }
 
         return mCurrentPressStatus == STATUS_LONG_PRESSING;
@@ -120,6 +125,9 @@ class PopupTouchListener implements View.OnTouchListener {
         mLongPressHandler.postDelayed(mLongPressRunnable, mLongClickDuration + 10);
 
         updateLastMotionEventRunnable(motionEvent);
+        updateRunnableView(touchedView);
+
+        mLongPressRunnable.setStartView(touchedView);
 
         mStartPressTimestamp = System.currentTimeMillis();
         mCurrentPressStatus = STATUS_PRESSING;
@@ -141,12 +149,16 @@ class PopupTouchListener implements View.OnTouchListener {
 
 
     // Long press methods
-    private void startLongPress(MotionEvent motionEvent) {
+    private void startLongPress(View view, MotionEvent motionEvent) {
         mCurrentPressStatus = STATUS_LONG_PRESSING;
         mPressPopupInterface.onLongPressStart(motionEvent);
+        if (view != null && view.getParent() != null) {
+            view.getParent().requestDisallowInterceptTouchEvent(true);
+        }
     }
 
     private void continueLongPress(MotionEvent motionEvent, int longPressDuration) {
+
         mPressPopupInterface.onLongPressContinue(longPressDuration, motionEvent);
     }
 
@@ -160,6 +172,12 @@ class PopupTouchListener implements View.OnTouchListener {
     private void updateLastMotionEventRunnable(MotionEvent motionEvent) {
         if (mLongPressRunnable != null) {
             mLongPressRunnable.setLastMotionEvent(motionEvent);
+        }
+    }
+
+    private void updateRunnableView(View view) {
+        if (mLongPressRunnable != null) {
+            mLongPressRunnable.setStartView(view);
         }
     }
 
@@ -213,7 +231,7 @@ class PopupTouchListener implements View.OnTouchListener {
             if (mCurrentPressStatus == STATUS_PRESSING &&
                     System.currentTimeMillis() - mStartPressTimestamp >= mLongClickDuration) {
 
-                startLongPress(getLastMotionEvent());
+                startLongPress(getStartView(), getLastMotionEvent());
             }
         }
     };

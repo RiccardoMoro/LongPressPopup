@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import rm.com.longpresspopup.LongPressPopup;
-import rm.com.longpresspopup.LongPressPopupBuilder;
 import rm.com.longpresspopup.PopupInflaterListener;
+import rm.com.longpresspopup.PopupLongPress;
+import rm.com.longpresspopup.PopupLongPressBuilder;
 import rm.com.longpresspopup.PopupOnHoverListener;
 import rm.com.longpresspopup.PopupStateListener;
 import rm.com.longpresspopupsample.Data;
@@ -30,7 +30,7 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder
 
     private ImageView mImg;
 
-    private LongPressPopup mPopup;
+    private PopupLongPress mPopup;
     private ImageView mPopupImg;
     private TextView mPopupTitle;
 
@@ -49,13 +49,11 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder
                 .load(Data.sImgResources[getAdapterPosition()])
                 .into(mImg);
 
-        mPopup = new LongPressPopupBuilder(itemView.getContext())
+        mPopup = new PopupLongPressBuilder(itemView.getContext())
                 .setTarget(itemView)
                 .setPopupView(R.layout.popup_layout, this)
-                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_CENTER)
+                .setAnimationType(PopupLongPress.ANIMATION_TYPE_FROM_CENTER)
                 .setPopupListener(this)
-                .setLongPressReleaseListener(this)
-                .setDismissOnLongPressStop(true)
                 .setOnHoverListener(this)
                 .build();
         mPopup.register();
@@ -65,22 +63,23 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder
 
 
     @Override
+    public void onViewInflated(@Nullable String popupTag, View root) {
+        mPopupImg = (ImageView) root.findViewById(R.id.popup_img);
+        mPopupTitle = (TextView) root.findViewById(R.id.popup_title);
+
+        mPopupTitle.setOnClickListener(this);
+    }
+
+    @Override
     public void onClick(View view) {
-        if (view.getId() == mPopupTitle.getId() || view.getId() == itemView.getId()) {
+        if ((mPopupTitle != null && view.getId() == mPopupTitle.getId()) ||
+                view.getId() == itemView.getId()) {
             Intent startIntent = new Intent(itemView.getContext(), ActivityDetail.class);
 
             startIntent.putExtra(ActivityDetail.BUNDLE_ELEMENT, getAdapterPosition());
 
             itemView.getContext().startActivity(startIntent);
         }
-    }
-
-
-    @Override
-    public void onViewInflated(View root) {
-        root.setOnClickListener(this);
-        mPopupImg = (ImageView) root.findViewById(R.id.popup_img);
-        mPopupTitle = (TextView) root.findViewById(R.id.popup_title);
     }
 
 

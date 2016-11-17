@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">LongPressPopupSample</string>
+
+    <!-- Version names -->
     <string name="cupcacke">Cupcake</string>
     <string name="donut">Donut</string>
     <string name="eclair">Eclair</string>
@@ -10,8 +12,10 @@
     <string name="jelly_bean">Jelly Bean</string>
     <string name="kit_kat">KitKat</string>
     <string name="lollipop">Lollipop</string>
-    <string name="marshmellow">Marshmellow</string>
+    <string name="marshmallow">Marshmallow</string>
     <string name="nougat">Noutgat</string>
+
+    <!-- Version descriptions -->
     <string name="cupcacke_desc">Android 1.5 \'Cupcake\' was the second Android version developed by
         Google, a major platform release deployable to Android-powered handsets starting
         in May 2009. The release includes new features for users and developers, as well as
@@ -139,7 +143,7 @@
 
         As of November 2016, statistics issued by Google indicate that 34% of all Android devices
         accessing Google Play run Lollipop.</string>
-    <string name="marshmellow_desc">Android 6.0–6.0.1 \'Marshmallow\'
+    <string name="marshmallow_desc">Android 6.0–6.0.1 \'Marshmallow\'
         (codenamed M during development)is the 6th major version of the Android operating system.
         First unveiled in May 2015 at Google I/O, it was officially released in October 2015.
 
@@ -163,6 +167,8 @@
         support for inline replies to notifications, as well as an OpenJDK-based Java environment
         and support for the Vulkan graphics rendering API, and \'seamless\' system updates on
         supported devices.</string>
+
+    <!-- Version numbers -->
     <string name="cupcacke_numbers">1.5</string>
     <string name="donut_numbers">1.6</string>
     <string name="eclair_numbers">2.0 – 2.1</string>
@@ -173,8 +179,25 @@
     <string name="jelly_bean_numbers">4.1 – 4.3.1</string>
     <string name="kit_kat_numbers">4.4 – 4.4.4</string>
     <string name="lollipop_numbers">5.0 – 5.1.1</string>
-    <string name="marshmellow_numbers">6.0 – 6.0.1</string>
+    <string name="marshmallow_numbers">6.0 – 6.0.1</string>
     <string name="nougat_numbers">7.0 – 7.1</string>
+
+
+    <!-- Version urls -->
+    <string name="cupcacke_url">https://en.wikipedia.org/wiki/Android_Cupcake</string>
+    <string name="donut_url">https://en.wikipedia.org/wiki/Android_Donut</string>
+    <string name="eclair_url">https://en.wikipedia.org/wiki/Android_Eclair</string>
+    <string name="froyo_url">https://en.wikipedia.org/wiki/Android_Froyo</string>
+    <string name="gingerbread_url">https://en.wikipedia.org/wiki/Android_Gingerbread</string>
+    <string name="honeycomb_url">https://en.wikipedia.org/wiki/Android_Honeycomb</string>
+    <string name="ice_cream_sandwich_url">https://en.wikipedia.org/wiki/Android_Ice_Cream_Sandwich</string>
+    <string name="jelly_bean_url">https://en.wikipedia.org/wiki/Android_Jelly_Bean</string>
+    <string name="kit_kat_url">https://en.wikipedia.org/wiki/Android_KitKat</string>
+    <string name="lollipop_url">https://en.wikipedia.org/wiki/Android_Lollipop</string>
+    <string name="marshmallow_url">https://en.wikipedia.org/wiki/Android_Marshmallow</string>
+    <string name="nougat_url">https://en.wikipedia.org/wiki/Android_Nougat</string>
+
+    <!-- GitHub -->
     <string name="my_github">My GitHub</string>
     <string name="my_github_url">https://github.com/RiccardoMoro/LongPressPopup</string>
 </resources>

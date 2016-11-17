@@ -9,9 +9,13 @@ import android.view.View;
  * Created by Riccardo on 11/11/16.
  */
 
-public class LongPressPopupBuilder {
+public class PopupLongPressBuilder {
 
-    private static final String TAG = LongPressPopupBuilder.class.getSimpleName();
+    private static final String TAG = PopupLongPressBuilder.class.getSimpleName();
+
+    /**
+     * For variable meanings, check {@link PopupLongPress}
+     */
 
     private Context mContext;
     private View mViewTarget;
@@ -31,7 +35,10 @@ public class LongPressPopupBuilder {
     private String mTag;
     private int mAnimationType;
 
-    public LongPressPopupBuilder(Context context) {
+    /**
+     * Constructor that initialize all the parameters to default value
+     */
+    public PopupLongPressBuilder(Context context) {
         mContext = context;
         mViewTarget = null;
         mViewPopup = null;
@@ -47,22 +54,26 @@ public class LongPressPopupBuilder {
         mOnHoverListener = null;
         mPopupListener = null;
         mTag = null;
-        mAnimationType = LongPressPopup.ANIMATION_TYPE_FROM_CENTER;
+        mAnimationType = PopupLongPress.ANIMATION_TYPE_FROM_CENTER;
     }
 
 
     // Setters
-    public LongPressPopupBuilder setTarget(View target) {
+
+    /**
+     * Check them at {@link PopupLongPress} variable section
+     */
+    public PopupLongPressBuilder setTarget(View target) {
         mViewTarget = target;
         return this;
     }
 
-    public LongPressPopupBuilder setPopupView(View popupView) {
+    public PopupLongPressBuilder setPopupView(View popupView) {
         mViewPopup = popupView;
         return this;
     }
 
-    public LongPressPopupBuilder setPopupView(@LayoutRes int popupViewRes,
+    public PopupLongPressBuilder setPopupView(@LayoutRes int popupViewRes,
                                               PopupInflaterListener inflaterListener) {
         mViewPopupRes = popupViewRes;
         mInflaterListener = inflaterListener;
@@ -70,7 +81,7 @@ public class LongPressPopupBuilder {
         return this;
     }
 
-    public LongPressPopupBuilder setLongPressDuration(@IntRange(from = 1) int duration) {
+    public PopupLongPressBuilder setLongPressDuration(@IntRange(from = 1) int duration) {
         if (duration > 0) {
             mLongPressDuration = duration;
         }
@@ -78,7 +89,7 @@ public class LongPressPopupBuilder {
         return this;
     }
 
-    public LongPressPopupBuilder setDismissOnLongPressStop(boolean dismissOnPressStop) {
+    public PopupLongPressBuilder setDismissOnLongPressStop(boolean dismissOnPressStop) {
         mDismissOnLongPressStop = dismissOnPressStop;
 
         // Set dispatch touch on release only if the dialog is set to be dismissed after touch
@@ -87,42 +98,42 @@ public class LongPressPopupBuilder {
         return this;
     }
 
-    public LongPressPopupBuilder setDismissOnTouchOutside(boolean dismissOnTouchOutside) {
+    public PopupLongPressBuilder setDismissOnTouchOutside(boolean dismissOnTouchOutside) {
         mDismissOnTouchOutside = dismissOnTouchOutside;
         return this;
     }
 
-    public LongPressPopupBuilder setDismissOnBackPressed(boolean dismissOnBackPressed) {
+    public PopupLongPressBuilder setDismissOnBackPressed(boolean dismissOnBackPressed) {
         mDismissOnBackPressed = dismissOnBackPressed;
         return this;
     }
 
-    public LongPressPopupBuilder setCancelTouchOnDragOutsideView(boolean cancelOnDragOutside) {
+    public PopupLongPressBuilder setCancelTouchOnDragOutsideView(boolean cancelOnDragOutside) {
         mCancelTouchOnDragOutsideView = cancelOnDragOutside;
         return this;
     }
 
-    public LongPressPopupBuilder setLongPressReleaseListener(View.OnClickListener listener) {
+    public PopupLongPressBuilder setLongPressReleaseListener(View.OnClickListener listener) {
         mLongPressReleaseClickListener = listener;
         return this;
     }
 
-    public LongPressPopupBuilder setOnHoverListener(PopupOnHoverListener listener) {
+    public PopupLongPressBuilder setOnHoverListener(PopupOnHoverListener listener) {
         mOnHoverListener = listener;
         return this;
     }
 
-    public LongPressPopupBuilder setPopupListener(PopupStateListener popupListener) {
+    public PopupLongPressBuilder setPopupListener(PopupStateListener popupListener) {
         mPopupListener = popupListener;
         return this;
     }
 
-    public LongPressPopupBuilder setTag(String tag) {
+    public PopupLongPressBuilder setTag(String tag) {
         mTag = tag;
         return this;
     }
 
-    public LongPressPopupBuilder setAnimationType(@LongPressPopup.AnimationType int animationType) {
+    public PopupLongPressBuilder setAnimationType(@PopupLongPress.AnimationType int animationType) {
         mAnimationType = animationType;
         return this;
     }
@@ -190,19 +201,26 @@ public class LongPressPopupBuilder {
         return mTag;
     }
 
-    @LongPressPopup.AnimationType
+    @PopupLongPress.AnimationType
     public int getAnimationType() {
         return mAnimationType;
     }
 
 
-    // Build methods to obtain the LongPressPopup instance
-    public LongPressPopup build(String tag) {
+    // Build methods to obtain the PopupLongPress instance
+
+    /**
+     * Build with tag, returns a LongPressPopupIntance
+     */
+    public PopupLongPress build(String tag) {
         setTag(tag);
         return build();
     }
 
-    public LongPressPopup build() {
-        return new LongPressPopup(this);
+    /**
+     * Build without tag, returns a LongPressInstance
+     */
+    public PopupLongPress build() {
+        return new PopupLongPress(this);
     }
 }

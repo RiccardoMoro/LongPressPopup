@@ -16,7 +16,7 @@ public class IntentUtils {
         openLink(context, context.getString(R.string.my_github_url));
     }
 
-    static void openLink(Context context, String link) {
+    public static void openLink(Context context, String link) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
         context.startActivity(browserIntent);
     }

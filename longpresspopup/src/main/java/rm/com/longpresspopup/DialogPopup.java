@@ -13,11 +13,11 @@ public class DialogPopup extends AlertDialog {
 
     private static final String TAG = DialogPopup.class.getSimpleName();
 
-    @LongPressPopup.AnimationType
+    @PopupLongPress.AnimationType
     private int mAnimationType;
 
-    protected DialogPopup(@NonNull Context context,
-                          @LongPressPopup.AnimationType int animationType) {
+    DialogPopup(@NonNull Context context,
+                @PopupLongPress.AnimationType int animationType) {
         super(context);
 
         mAnimationType = animationType;
@@ -28,39 +28,45 @@ public class DialogPopup extends AlertDialog {
         super.onCreate(savedInstanceState);
 
         try {
-            int animations = 0;
-            switch (mAnimationType) {
-                case LongPressPopup.ANIMATION_TYPE_NO_ANIMATION:
 
-                    animations = 0;
-                    break;
+            // Setup the dialog popup animation
+            if (getWindow() != null) {
 
-                case LongPressPopup.ANIMATION_TYPE_FROM_LEFT:
+                int animations = 0;
+                switch (mAnimationType) {
+                    case PopupLongPress.ANIMATION_TYPE_NO_ANIMATION:
 
-                    animations = R.style.DialogAnimationsFromLeft;
-                    break;
+                        animations = 0;
+                        break;
 
-                case LongPressPopup.ANIMATION_TYPE_FROM_RIGHT:
+                    case PopupLongPress.ANIMATION_TYPE_FROM_LEFT:
 
-                    animations = R.style.DialogAnimationsFromRight;
-                    break;
+                        animations = R.style.DialogAnimationsFromLeft;
+                        break;
 
-                case LongPressPopup.ANIMATION_TYPE_FROM_BOTTOM:
+                    case PopupLongPress.ANIMATION_TYPE_FROM_RIGHT:
 
-                    animations = R.style.DialogAnimationsFromBottom;
-                    break;
-                case LongPressPopup.ANIMATION_TYPE_FROM_TOP:
+                        animations = R.style.DialogAnimationsFromRight;
+                        break;
 
-                    animations = R.style.DialogAnimationsFromTop;
-                    break;
+                    case PopupLongPress.ANIMATION_TYPE_FROM_BOTTOM:
 
-                case LongPressPopup.ANIMATION_TYPE_FROM_CENTER:
+                        animations = R.style.DialogAnimationsFromBottom;
+                        break;
+                    case PopupLongPress.ANIMATION_TYPE_FROM_TOP:
 
-                    animations = R.style.DialogAnimationsFromCenter;
-                    break;
+                        animations = R.style.DialogAnimationsFromTop;
+                        break;
+
+                    case PopupLongPress.ANIMATION_TYPE_FROM_CENTER:
+
+                        animations = R.style.DialogAnimationsFromCenter;
+                        break;
+                }
+
+                getWindow().setWindowAnimations(animations);
             }
 
-            getWindow().setWindowAnimations(animations);
         } catch (Exception e) {
             e.printStackTrace();
         }

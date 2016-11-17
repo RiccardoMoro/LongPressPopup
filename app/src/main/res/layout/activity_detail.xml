@@ -18,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
+            android:isScrollContainer="false"
+            android:nestedScrollingEnabled="false"
             app:collapsedTitleTextAppearance="@style/TextAppearanceCollapsed"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleMarginEnd="64dp"
@@ -51,17 +53,39 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:paddingBottom="32dp"
         android:paddingEnd="12dp"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"
         android:paddingStart="12dp"
+        android:paddingTop="32dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <TextView
-            android:id="@+id/txt_detail_description"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textSize="18sp"/>
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txt_detail_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_horizontal"
+                android:textSize="18sp"/>
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab_wikipedia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_detail_description"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_wikipedia"
+                app:backgroundTint="@color/colorPrimary"
+                app:elevation="32dp"
+                app:fabSize="normal"
+                app:rippleColor="@color/colorPrimaryDark"/>
+        </RelativeLayout>
+
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>
