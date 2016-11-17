@@ -83,7 +83,7 @@
         of new features, Honeycomb introduced a new so-called \'holographic\' user interface theme
         and an interaction model that built on the main features of Android, such as multitasking,
         notifications and widgets.</string>
-    <string name="ice_cream_sandwich_desc"><!--Android 4.0–4.0.4 Ice Cream Sandwich is a
+    <string name="ice_cream_sandwich_desc"><!--Android 4.0-4.0.4 Ice Cream Sandwich is a
         discontinued version of the Android mobile operating system developed by Google.
         Unveiled on October 19, 2011, Android 4.0 builds upon the significant changes made by the
         tablet-only release Android Honeycomb, in an effort to create a unified platform for both
@@ -176,5 +176,5 @@
     <string name="marshmellow_numbers">6.0 – 6.0.1</string>
     <string name="nougat_numbers">7.0 – 7.1</string>
     <string name="my_github">My GitHub</string>
-    <string name="my_github_url">https://github.com/RiccardoMoro</string>
+    <string name="my_github_url">https://github.com/RiccardoMoro/LongPressPopup</string>
 </resources>

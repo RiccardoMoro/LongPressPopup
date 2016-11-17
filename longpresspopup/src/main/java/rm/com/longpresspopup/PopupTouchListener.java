@@ -105,10 +105,11 @@ class PopupTouchListener implements View.OnTouchListener {
 
         if (mCurrentPressStatus == STATUS_LONG_PRESSING) {
             view.getParent().requestDisallowInterceptTouchEvent(true);
+        } else {
+            view.getParent().requestDisallowInterceptTouchEvent(false);
         }
 
-        return mCurrentPressStatus == STATUS_PRESSING ||
-                mCurrentPressStatus == STATUS_LONG_PRESSING;
+        return mCurrentPressStatus == STATUS_LONG_PRESSING;
     }
 
 
