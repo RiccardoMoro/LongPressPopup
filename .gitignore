@@ -2,10 +2,11 @@
 .gradle
 /local.properties
 /.idea
-.idea/*
 .DS_Store
 /build
 /captures
 .externalNativeBuild
 libs/
 src/main/res/drawable/
+
+app/app-release.apk
