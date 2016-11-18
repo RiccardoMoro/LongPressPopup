@@ -94,14 +94,14 @@ LongPressPopupBuilder class: <br />
     
 <br /><br />
 
-Also, the LongPressPopup class gives some utility method, like <br /> 
-* register() <br />
+Also, the LongPressPopup class gives some utility methods, like <br /> 
+* ```public void register()``` <br />
     Which means that the popup is listening for touch events on the given view to show itself <br /> <br />
-* unregister() <br />
+* ```public void unregister()``` <br />
     Which makes to popup stop listening for touch events and dismiss itself if open  <br /> <br />
-* showNow() <br />
+* ```public void showNow()``` <br />
     Which shows immediately the popup
-* dismissNow() <br />
+* ```public void dismissNow()``` <br />
     Which dismiss immediately the popup if open
 
 <br /> <br />
