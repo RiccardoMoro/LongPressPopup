@@ -95,7 +95,10 @@ LongPressPopupBuilder class: <br />
 
 Here's a complete example with all the options <br />
 ```java
-public class ActivityMain extends AppCompatActivity {
+public class ActivityMain extends AppCompatActivity implements PopupInflaterListener,
+            PopupStateListener, PopupOnHoverListener, View.OnClickListener {
+
+    private static final String TAG = ActivityMain.class.getSimpleName();
      
     private TextView mTxtPopup;   
         
@@ -126,16 +129,39 @@ public class ActivityMain extends AppCompatActivity {
         popup.register();
     }
     
+    
+    // Popup inflater listener
     @Override
     public void onViewInflated(@Nullable String popupTag, View root) {
         mTxtPopup = (TextView) root.findViewById(R.id.txt_popup);
     }
     
+    
+    // Touch released on a View listener
     @Override
     public void onClick(View view) {
-        if(mTxtPopup != null && view.getId() == mTxtPopup.getId()) {
+        if (mTxtPopup != null && view.getId() == mTxtPopup.getId()) {
             Toast.makeText(Toast.makeText(ActivityMain.this, "TextView Clicked!"));
         }
+    }
+    
+    
+    // PopupStateListener
+    @Override
+    public void onPopupShow(@Nullable String popupTag) {
+        if(mTxtPopup != null) {
+            mTxtPopup.setText("FooBar!");
+        }
+    }
+    
+    @Override
+    public void onPopupDismiss(@Nullable String popupTag) {
+        Toast.makeText(this, "Popup dismissed!", Toast.LENGTH_SHORT).show();
+    }
+    
+    @Override
+    public void onHoverChanged(View view, boolean isHovered) {
+        Log.e(TAG, "Hover change: " + isHovered + " on View " + view.getClass().getSimpleName());
     }
 }
 ```

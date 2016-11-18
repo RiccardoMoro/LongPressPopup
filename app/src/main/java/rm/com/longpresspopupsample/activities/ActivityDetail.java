@@ -8,18 +8,15 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -79,6 +76,7 @@ public class ActivityDetail extends AppCompatActivity implements PopupInflaterLi
         mToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         mFabWikipedia = (FloatingActionButton) findViewById(R.id.fab_wikipedia);
 
+        // Toolbar long click popup
         new LongPressPopupBuilder(this)
                 .setTarget(mToolbarLayout)
                 .setPopupView(R.layout.popup_layout_image, this)
@@ -87,6 +85,7 @@ public class ActivityDetail extends AppCompatActivity implements PopupInflaterLi
                 .build(TOOLBAR_TAG)
                 .register();
 
+        // Fab wikipedia long click popup
         new LongPressPopupBuilder(this)
                 .setTarget(mFabWikipedia)
                 .setPopupView(R.layout.popup_layout_webview, this)
@@ -228,7 +227,8 @@ public class ActivityDetail extends AppCompatActivity implements PopupInflaterLi
 
     @Override
     public void onPopupDismiss(@Nullable String popupTag) {
-        if (popupTag != null && popupTag.equals(FAB_TAG) && mWebViewWikipedia != null) {
+        if (popupTag != null && popupTag.equals(FAB_TAG) && mWebViewWikipedia != null &&
+                Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             mWebViewWikipedia.onPause();
         }
     }
