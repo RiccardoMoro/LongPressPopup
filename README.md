@@ -89,7 +89,18 @@ LongPressPopupBuilder class: <br />
     method <br /> <br />
 * ```public LongPressPopupBuilder setAnimationType(@LongPressPopup.AnimationType int animationType)``` <b>(none by default)</b> <br />
     This method set the opening and closing animation for the popup, can be none or from-to Bottom, Top, Right, Left, Center
+    
+<br />
 
+Also, the LongPressPopup class gives some utility method, like <br /> 
+* register() <br />
+    Which means that the popup is listening for touch events on the given view to show itself <br /> <br />
+* unregister() <br />
+    Which makes to popup stop listening for touch events and dismiss itself if open  <br /> <br />
+* showNow() <br />
+    Which shows immediately the popup
+* dismissNow() <br />
+    Which dismiss immediately the popup if open
 
 <br /> <br />
 
