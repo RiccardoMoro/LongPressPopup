@@ -1,5 +1,5 @@
 Changelog
 ------
 #### New from v1.0: <br />
-(WIP) <br />
+(18/11/2016) <br />
 -Initial release <br />

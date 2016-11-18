@@ -15,7 +15,7 @@ Download
 ------
 ####Gradle:
 ```groovy
-compile @@@@@@@@@
+compile 'com.rm:longpresspopup:1.0.0'
 ```
 
 ##Usage
@@ -47,6 +47,8 @@ public class ActivityMain extends AppCompatActivity {
         }
 }
 ```
+
+<img src="sample_short.gif" title="sample" />
 
 ####Advanced
 Here are the functions you can use to customize the Popup and it's behaviour from the
@@ -90,7 +92,7 @@ LongPressPopupBuilder class: <br />
 * ```public LongPressPopupBuilder setAnimationType(@LongPressPopup.AnimationType int animationType)``` <b>(none by default)</b> <br />
     This method set the opening and closing animation for the popup, can be none or from-to Bottom, Top, Right, Left, Center
     
-<br />
+<br /><br />
 
 Also, the LongPressPopup class gives some utility method, like <br /> 
 * register() <br />
