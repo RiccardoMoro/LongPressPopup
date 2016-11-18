@@ -141,7 +141,7 @@ public class ActivityMain extends AppCompatActivity implements PopupInflaterList
     @Override
     public void onClick(View view) {
         if (mTxtPopup != null && view.getId() == mTxtPopup.getId()) {
-            Toast.makeText(Toast.makeText(ActivityMain.this, "TextView Clicked!"));
+            Toast.makeText(ActivityMain.this, "TextView Clicked!", Toast.LENGTH_SHORT).show();
         }
     }
     
