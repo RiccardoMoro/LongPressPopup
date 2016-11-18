@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import rm.com.longpresspopup.LongPressPopup;
 import rm.com.longpresspopup.PopupInflaterListener;
-import rm.com.longpresspopup.PopupLongPress;
-import rm.com.longpresspopup.PopupLongPressBuilder;
+import rm.com.longpresspopup.LongPressPopupBuilder;
 import rm.com.longpresspopup.PopupOnHoverListener;
 import rm.com.longpresspopup.PopupStateListener;
 import rm.com.longpresspopupsample.Data;
@@ -30,7 +30,7 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder
 
     private ImageView mImg;
 
-    private PopupLongPress mPopup;
+    private LongPressPopup mPopup;
     private ImageView mPopupImg;
     private TextView mPopupTitle;
 
@@ -49,10 +49,10 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder
                 .load(Data.sImgResources[getAdapterPosition()])
                 .into(mImg);
 
-        mPopup = new PopupLongPressBuilder(itemView.getContext())
+        mPopup = new LongPressPopupBuilder(itemView.getContext())
                 .setTarget(itemView)
                 .setPopupView(R.layout.popup_layout, this)
-                .setAnimationType(PopupLongPress.ANIMATION_TYPE_FROM_CENTER)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_CENTER)
                 .setPopupListener(this)
                 .setOnHoverListener(this)
                 .build();

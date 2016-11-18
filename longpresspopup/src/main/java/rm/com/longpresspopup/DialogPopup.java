@@ -13,11 +13,11 @@ public class DialogPopup extends AlertDialog {
 
     private static final String TAG = DialogPopup.class.getSimpleName();
 
-    @PopupLongPress.AnimationType
+    @LongPressPopup.AnimationType
     private int mAnimationType;
 
     DialogPopup(@NonNull Context context,
-                @PopupLongPress.AnimationType int animationType) {
+                @LongPressPopup.AnimationType int animationType) {
         super(context);
 
         mAnimationType = animationType;
@@ -34,31 +34,31 @@ public class DialogPopup extends AlertDialog {
 
                 int animations = 0;
                 switch (mAnimationType) {
-                    case PopupLongPress.ANIMATION_TYPE_NO_ANIMATION:
+                    case LongPressPopup.ANIMATION_TYPE_NO_ANIMATION:
 
                         animations = 0;
                         break;
 
-                    case PopupLongPress.ANIMATION_TYPE_FROM_LEFT:
+                    case LongPressPopup.ANIMATION_TYPE_FROM_LEFT:
 
                         animations = R.style.DialogAnimationsFromLeft;
                         break;
 
-                    case PopupLongPress.ANIMATION_TYPE_FROM_RIGHT:
+                    case LongPressPopup.ANIMATION_TYPE_FROM_RIGHT:
 
                         animations = R.style.DialogAnimationsFromRight;
                         break;
 
-                    case PopupLongPress.ANIMATION_TYPE_FROM_BOTTOM:
+                    case LongPressPopup.ANIMATION_TYPE_FROM_BOTTOM:
 
                         animations = R.style.DialogAnimationsFromBottom;
                         break;
-                    case PopupLongPress.ANIMATION_TYPE_FROM_TOP:
+                    case LongPressPopup.ANIMATION_TYPE_FROM_TOP:
 
                         animations = R.style.DialogAnimationsFromTop;
                         break;
 
-                    case PopupLongPress.ANIMATION_TYPE_FROM_CENTER:
+                    case LongPressPopup.ANIMATION_TYPE_FROM_CENTER:
 
                         animations = R.style.DialogAnimationsFromCenter;
                         break;

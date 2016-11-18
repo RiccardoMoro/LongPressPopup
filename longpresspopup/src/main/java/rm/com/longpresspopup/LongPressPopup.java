@@ -19,9 +19,9 @@ import java.lang.annotation.RetentionPolicy;
  * Created by Riccardo on 11/11/16.
  */
 
-public class PopupLongPress implements LongPressPopupInterface, DialogInterface.OnDismissListener {
+public class LongPressPopup implements LongPressPopupInterface, DialogInterface.OnDismissListener {
 
-    private static final String TAG = PopupLongPress.class.getSimpleName();
+    private static final String TAG = LongPressPopup.class.getSimpleName();
 
     /**
      * A valid context reference
@@ -127,7 +127,7 @@ public class PopupLongPress implements LongPressPopupInterface, DialogInterface.
     /**
      * Construct from builder, get all the configured params
      */
-    PopupLongPress(@NonNull PopupLongPressBuilder builder) {
+    LongPressPopup(@NonNull LongPressPopupBuilder builder) {
         if (builder != null) {
             mContext = builder.getContext();
             mViewTarget = builder.getViewTarget();
@@ -162,7 +162,7 @@ public class PopupLongPress implements LongPressPopupInterface, DialogInterface.
     }
 
     /**
-     * Used to register a PopupLongPress, it will start listening to touch events only when you
+     * Used to register a LongPressPopup, it will start listening to touch events only when you
      * call this method
      */
     public void register() {

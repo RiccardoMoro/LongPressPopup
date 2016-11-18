@@ -8,21 +8,24 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import rm.com.longpresspopup.LongPressPopup;
+import rm.com.longpresspopup.LongPressPopupBuilder;
 import rm.com.longpresspopup.PopupInflaterListener;
-import rm.com.longpresspopup.PopupLongPress;
-import rm.com.longpresspopup.PopupLongPressBuilder;
 import rm.com.longpresspopup.PopupOnHoverListener;
 import rm.com.longpresspopup.PopupStateListener;
 import rm.com.longpresspopupsample.Data;
@@ -76,18 +79,18 @@ public class ActivityDetail extends AppCompatActivity implements PopupInflaterLi
         mToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         mFabWikipedia = (FloatingActionButton) findViewById(R.id.fab_wikipedia);
 
-        new PopupLongPressBuilder(this)
+        new LongPressPopupBuilder(this)
                 .setTarget(mToolbarLayout)
                 .setPopupView(R.layout.popup_layout_image, this)
                 .setPopupListener(this)
-                .setAnimationType(PopupLongPress.ANIMATION_TYPE_FROM_TOP)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_TOP)
                 .build(TOOLBAR_TAG)
                 .register();
 
-        new PopupLongPressBuilder(this)
+        new LongPressPopupBuilder(this)
                 .setTarget(mFabWikipedia)
                 .setPopupView(R.layout.popup_layout_webview, this)
-                .setAnimationType(PopupLongPress.ANIMATION_TYPE_FROM_BOTTOM)
+                .setAnimationType(LongPressPopup.ANIMATION_TYPE_FROM_BOTTOM)
                 .setDismissOnLongPressStop(false)
                 .setDismissOnTouchOutside(true)
                 .setPopupListener(this)
