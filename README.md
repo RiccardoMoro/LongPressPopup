@@ -2,6 +2,9 @@ LongPressPopup
 ==============
 
 <img src="sample.gif" title="sample" />
+<br />
+You can try the demo app on google play store. <br />
+https://play.google.com/store/apps/details?id=rm.com.longpresspopupsample <br />
 
 A library that let you implement a behaviour similar to the Instagram's <br />
 long press to show detail one, with the option to put every kind of views inside it, <br />
