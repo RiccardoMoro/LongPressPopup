@@ -54,61 +54,6 @@ public class ActivityMain extends AppCompatActivity {
 <img src="sample_short.gif" title="sample" />
 
 ####Advanced
-Here are the functions you can use to customize the Popup and it's behaviour from the
-LongPressPopupBuilder class: <br />
-
-* ```public LongPressPopupBuilder setTarget(View target)``` <b>(null by default) </b> <br />
-    Select which view will show the popup view if long pressed <br /> <br />
-* ```public LongPressPopupBuilder setPopupView(View popupView)``` <b>(null by default)</b> <br />
-    Select the view that will be shown inside the popup <br /> <br />
-* ```public LongPressPopupBuilder setPopupView(@LayoutRes int popupViewRes, PopupInflaterListener inflaterListener)``` <b>(0, null by default)</b> <br />
-    Select the view that will be shown inside the popup, and give the popup that will be <br />
-    called when the view is inflated (not necessarily when shown, so not load images and so on in this callback, <br />
-    just take the views like in the OnCreate method of an Activity) <br /> <br />
-* ```public LongPressPopupBuilder setLongPressDuration(@IntRange(from = 1) int duration)``` <b>(500 by default)</b> <br />
-    Pretty self explanatory right? **Captain here, the long press time needed to show the popup <br /> <br />
-* ```public LongPressPopupBuilder setDismissOnLongPressStop(boolean dismissOnPressStop)``` <b>(true by default)</b> <br />
-    Set if the popup will be dismissed when the user releases the finger (if released on a View inside <br />
-    the popup, the View's or the given OnClickListener will be called) <br /> <br />
-* ```public LongPressPopupBuilder setDismissOnTouchOutside(boolean dismissOnTouchOutside)``` <b>(true by default)</b> <br />
-    If ```setDismissOnLongPressStop(boolean dismissOnPressStop)``` is set to false, you can choose to make <br />
-    the popup dismiss or not if the user touch outside it with this boolean <br /> <br />
-* ```public LongPressPopupBuilder setDismissOnBackPressed(boolean dismissOnBackPressed)```  <b>(true by default)</b> <br />
-    If ```setDismissOnLongPressStop(boolean dismissOnPressStop)``` is set to false, you can choose to make <br />
-    the popup dismiss or not if the user press the back button <br /> <br />
-* ```public LongPressPopupBuilder setCancelTouchOnDragOutsideView(boolean cancelOnDragOutside)``` <b>(true by default)</b> <br />
-    Set if the long press timer will stop or not if the user drag the finger outside the target View <br />
-    (If the target View is inside a scrolling parent, when scrolling vertically the long press timer <br />
-    will be automatically stopped <br /> <br />
-* ```public LongPressPopupBuilder setLongPressReleaseListener(View.OnClickListener listener)``` <b>(null by default)</b> <br />
-    This is a standard OnClickListener, which will be called if the user release the finger on a view inside <br />
-    the popup, you can use this method or set a standard OnClickListener on the View you want, it will be called <br />
-    automatically for you <br /> <br />
-* ```public LongPressPopupBuilder setOnHoverListener(PopupOnHoverListener listener)``` <b>(null by default)</b> <br />
-    This listener will be called every time the user keeps dragging it's finger inside or outside the popup <br />
-    views, with a View reference and a boolean with the hover state <br /> <br />
-* ```public LongPressPopupBuilder setPopupListener(PopupStateListener popupListener)``` <b>(null by default)</b> <br />
-    This listener will be called when the popup is shown or dismissed, use this listener to load images or compile text views and so on <br /> <br />
-* ```public LongPressPopupBuilder setTag(String tag)``` <b>(null by default)</b> <br />
-    This method sets a tag on the LongPressPopup, the given tag will be returned in all the listeners. You can also set it in the build(String tag) <br /> 
-    method <br /> <br />
-* ```public LongPressPopupBuilder setAnimationType(@LongPressPopup.AnimationType int animationType)``` <b>(none by default)</b> <br />
-    This method set the opening and closing animation for the popup, can be none or from-to Bottom, Top, Right, Left, Center
-    
-<br /><br />
-
-Also, the LongPressPopup class gives some utility methods, like <br /> 
-* ```public void register()``` <br />
-    Which means that the popup is listening for touch events on the given view to show itself <br /> <br />
-* ```public void unregister()``` <br />
-    Which makes to popup stop listening for touch events and dismiss itself if open  <br /> <br />
-* ```public void showNow()``` <br />
-    Which shows immediately the popup
-* ```public void dismissNow()``` <br />
-    Which dismiss immediately the popup if open
-
-<br /> <br />
-
 Here's a complete example with all the options <br />
 ```java
 public class ActivityMain extends AppCompatActivity implements PopupInflaterListener,
@@ -183,7 +128,61 @@ public class ActivityMain extends AppCompatActivity implements PopupInflaterList
     }
 }
 ```
+<br /> <br />
+And here are the functions you can use to customize the Popup and it's behaviour from the
+LongPressPopupBuilder class: <br />
 
+* ```public LongPressPopupBuilder setTarget(View target)``` <b>(null by default) </b> <br />
+    Select which view will show the popup view if long pressed <br /> <br />
+* ```public LongPressPopupBuilder setPopupView(View popupView)``` <b>(null by default)</b> <br />
+    Select the view that will be shown inside the popup <br /> <br />
+* ```public LongPressPopupBuilder setPopupView(@LayoutRes int popupViewRes, PopupInflaterListener inflaterListener)``` <b>(0, null by default)</b> <br />
+    Select the view that will be shown inside the popup, and give the popup that will be <br />
+    called when the view is inflated (not necessarily when shown, so not load images and so on in this callback, <br />
+    just take the views like in the OnCreate method of an Activity) <br /> <br />
+* ```public LongPressPopupBuilder setLongPressDuration(@IntRange(from = 1) int duration)``` <b>(500 by default)</b> <br />
+    Pretty self explanatory right? **Captain here, the long press time needed to show the popup <br /> <br />
+* ```public LongPressPopupBuilder setDismissOnLongPressStop(boolean dismissOnPressStop)``` <b>(true by default)</b> <br />
+    Set if the popup will be dismissed when the user releases the finger (if released on a View inside <br />
+    the popup, the View's or the given OnClickListener will be called) <br /> <br />
+* ```public LongPressPopupBuilder setDismissOnTouchOutside(boolean dismissOnTouchOutside)``` <b>(true by default)</b> <br />
+    If ```setDismissOnLongPressStop(boolean dismissOnPressStop)``` is set to false, you can choose to make <br />
+    the popup dismiss or not if the user touch outside it with this boolean <br /> <br />
+* ```public LongPressPopupBuilder setDismissOnBackPressed(boolean dismissOnBackPressed)```  <b>(true by default)</b> <br />
+    If ```setDismissOnLongPressStop(boolean dismissOnPressStop)``` is set to false, you can choose to make <br />
+    the popup dismiss or not if the user press the back button <br /> <br />
+* ```public LongPressPopupBuilder setCancelTouchOnDragOutsideView(boolean cancelOnDragOutside)``` <b>(true by default)</b> <br />
+    Set if the long press timer will stop or not if the user drag the finger outside the target View <br />
+    (If the target View is inside a scrolling parent, when scrolling vertically the long press timer <br />
+    will be automatically stopped <br /> <br />
+* ```public LongPressPopupBuilder setLongPressReleaseListener(View.OnClickListener listener)``` <b>(null by default)</b> <br />
+    This is a standard OnClickListener, which will be called if the user release the finger on a view inside <br />
+    the popup, you can use this method or set a standard OnClickListener on the View you want, it will be called <br />
+    automatically for you <br /> <br />
+* ```public LongPressPopupBuilder setOnHoverListener(PopupOnHoverListener listener)``` <b>(null by default)</b> <br />
+    This listener will be called every time the user keeps dragging it's finger inside or outside the popup <br />
+    views, with a View reference and a boolean with the hover state <br /> <br />
+* ```public LongPressPopupBuilder setPopupListener(PopupStateListener popupListener)``` <b>(null by default)</b> <br />
+    This listener will be called when the popup is shown or dismissed, use this listener to load images or compile text views and so on <br /> <br />
+* ```public LongPressPopupBuilder setTag(String tag)``` <b>(null by default)</b> <br />
+    This method sets a tag on the LongPressPopup, the given tag will be returned in all the listeners. You can also set it in the build(String tag) <br /> 
+    method <br /> <br />
+* ```public LongPressPopupBuilder setAnimationType(@LongPressPopup.AnimationType int animationType)``` <b>(none by default)</b> <br />
+    This method set the opening and closing animation for the popup, can be none or from-to Bottom, Top, Right, Left, Center
+    
+<br /><br />
+
+Also, the LongPressPopup class gives some utility methods, like <br /> 
+* ```public void register()``` <br />
+    Which means that the popup is listening for touch events on the given view to show itself <br /> <br />
+* ```public void unregister()``` <br />
+    Which makes to popup stop listening for touch events and dismiss itself if open  <br /> <br />
+* ```public void showNow()``` <br />
+    Which shows immediately the popup
+* ```public void dismissNow()``` <br />
+    Which dismiss immediately the popup if open
+
+<br /> <br />
 
 License
 --------
