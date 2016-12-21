@@ -21,6 +21,10 @@ Download
 compile 'com.rm:longpresspopup:1.0.0'
 ```
 
+<br />
+<b>Min SDK version: 10 (Android 2.3.3) </b>
+<br />
+
 ##Usage
 
 ####Basic
