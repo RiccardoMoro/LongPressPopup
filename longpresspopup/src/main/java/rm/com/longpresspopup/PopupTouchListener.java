@@ -2,7 +2,6 @@ package rm.com.longpresspopup;
 
 import android.os.Handler;
 import android.support.annotation.IntDef;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -49,11 +48,6 @@ class PopupTouchListener implements View.OnTouchListener {
             return false;
         }
 
-        Log.e(TAG, "Touch event: " + (motionEvent.getAction() == MotionEvent.ACTION_DOWN ? "Down" :
-                motionEvent.getAction() == MotionEvent.ACTION_UP ? "Up" :
-                        motionEvent.getAction() == MotionEvent.ACTION_CANCEL ? "Cancel" :
-                                motionEvent.getAction() == MotionEvent.ACTION_MOVE ? "Move" :
-                                        "Other action"));
 
         // Press register
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() ==

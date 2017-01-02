@@ -9,7 +9,7 @@ Or see the full video demo on YouTube. <br />
 https://youtu.be/oSETieldmyw <br /> <br />
 
 A library that let you implement a behaviour similar to the Instagram's <br />
-long press to show detail one, with the option to put every kind of views inside it, <br />
+long-press to show detail, with the option to put every kind of views inside it, <br />
 (even web views, lists, pagers and so on) show tooltips on drag over <br />
 and handle the release of the finger over Views <br />
 
@@ -20,7 +20,7 @@ Download
 ------
 ####Gradle:
 ```groovy
-compile 'com.rm:longpresspopup:1.0.0'
+compile 'com.rm:longpresspopup:1.0.1'
 ```
 
 <br />
@@ -188,12 +188,17 @@ Also, the LongPressPopup class gives some utility methods, like <br />
 * ```public void dismissNow()``` <br />
     Which dismiss immediately the popup if open
 
-<br /> <br />
+<br />
+
+####Known Bugs
+* This library do not work correctly with ListViews (Use RecyclerViews!) <br />
+
+<br /><br />
 
 License
 --------
 
-    Copyright 2016 Riccardo Moro.
+    Copyright 2017 Riccardo Moro.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
