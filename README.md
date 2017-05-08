@@ -18,7 +18,7 @@ and handle the release of the finger over Views <br />
 
 Download
 ------
-####Gradle:
+#### Gradle:
 ```groovy
 compile 'com.rm:longpresspopup:1.0.1'
 ```
@@ -27,9 +27,9 @@ compile 'com.rm:longpresspopup:1.0.1'
 <b>Min SDK version: 10 (Android 2.3.3) </b>
 <br />
 
-##Usage
+## Usage
 
-####Basic
+#### Basic
 Here's a basic example <br />
 
 ```java
@@ -59,7 +59,7 @@ public class ActivityMain extends AppCompatActivity {
 
 <img src="sample_short.gif" title="sample" />
 
-####Advanced
+#### Advanced
 Here's a complete example with all the options <br />
 ```java
 public class ActivityMain extends AppCompatActivity implements PopupInflaterListener,
@@ -190,7 +190,7 @@ Also, the LongPressPopup class gives some utility methods, like <br />
 
 <br />
 
-####Known Bugs
+#### Known Bugs
 * This library do not work correctly with ListViews (Use RecyclerViews!) <br />
 
 <br /><br />
